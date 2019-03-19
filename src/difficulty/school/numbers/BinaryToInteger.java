@@ -1,4 +1,4 @@
-package basic.test;
+package difficulty.school.numbers;
 
 import java.util.Scanner;
 
