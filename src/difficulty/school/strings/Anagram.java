@@ -15,7 +15,7 @@ public class Anagram {
             char[] charS1 = s1.toCharArray();
             char[] charS2 = s2.toCharArray();
 
-            Arrays.sort(charS1);
+            Arrays.sort(charS1);  //use quickSort
             Arrays.sort(charS2);
 
             if (new String(charS1).equalsIgnoreCase(new String(charS2))) {

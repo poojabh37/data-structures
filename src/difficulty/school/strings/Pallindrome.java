@@ -24,4 +24,15 @@ public class Pallindrome {
     private static String reverseString(String source) {
         return new StringBuilder(source).reverse().toString();
     }
+
+    private static String reverse(String source) {
+        char[] origA = source.toCharArray();
+        char[] reverseA = new char[source.length()];
+        for (int i = source.length() - 1; i >= 0; i--) {
+            reverseA[source.length() - 1 - i] = origA[i];
+        }
+        return new String(reverseA);
+    }
+
+
 }
