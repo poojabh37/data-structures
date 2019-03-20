@@ -1,4 +1,4 @@
-package difficulty.school.numbers;
+package difficulty.school.numbers.recursion;
 
 import java.util.Scanner;
 
