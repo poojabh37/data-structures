@@ -17,10 +17,9 @@ class ReverseString {
 
     //method 1  --with auxillary array
     private static String reverse(String source) {
-        char[] origA = source.toCharArray();
         char[] reverseA = new char[source.length()];
         for (int i = source.length() - 1; i >= 0; i--) {
-            reverseA[source.length() - 1 - i] = origA[i];
+            reverseA[source.length() - 1 - i] = source.charAt(i);
         }
         return new String(reverseA);
     }
