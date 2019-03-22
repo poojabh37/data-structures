@@ -1,6 +1,7 @@
 package difficulty.school.strings;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Pallindrome {
 
@@ -10,18 +11,19 @@ public class Pallindrome {
 
             for (int i = 0; i < t; i++) {
                 String source = input.next();
-                isPallindrome(source);
+                isPalindrome(source);
             }
         }
     }
 
-    private static void isPallindrome(String source) {
-       /* source = source.toLowerCase();                       //check regardless of case and special char including spaces
-        Pattern regex = Pattern.compile("[^A-Za-z]");
+    private static void isPalindrome(String source) {
+        source = source.toLowerCase();                       //check regardless of case and special char including spaces
+        Pattern regex = Pattern.compile("[^A-Za-z0-9]");
         source = source.replaceAll(regex.pattern(), "");
-        */
+
         if (source.equals(reverse(source))) {
             System.out.println("YES");
+            return;
         }
         System.out.println("No");
     }

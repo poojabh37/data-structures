@@ -8,9 +8,24 @@ public class ReverseWords {
     public static void main(String[] args) {
         String source = "pooja.bhatia.is.happy";
         reverse(source);
+        System.out.println(lengthOfLastWord(source));
+    }
+
+    private static int lengthOfLastWord(final String A) {
+        String neww = A.trim();  //for trailing spaces at the last & start of string
+        int wordStart = 0;
+        for (int i = 0; i < neww.length(); i++) {
+            if (i == neww.length() - 1) {
+                return neww.substring(wordStart).length();
+            } else if (neww.charAt(i) == ' ') {
+                wordStart = i + 1;
+            }
+        }
+        return 0;
     }
 
     private static void reverseWords(String source) {
+        source = source.trim();
         String[] words = source.split("\\.");
         for (int i = words.length - 1; i >= 0; i--) {
             System.out.print(words[i] + ".");
@@ -19,6 +34,7 @@ public class ReverseWords {
 
     //method 2 --without Auxillary array
     private static void reverse(String s) {
+        s = s.trim();
         char[] revA = s.toCharArray();
         reverseString(revA, 0, s.length() - 1);
         int wordStart = 0;
