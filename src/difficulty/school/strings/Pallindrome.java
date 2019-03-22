@@ -10,15 +10,20 @@ public class Pallindrome {
 
             for (int i = 0; i < t; i++) {
                 String source = input.next();
-                String rev = reverseString(source);
-
-                if (source.equals(rev)) {
-                    System.out.println("YES");
-                } else {
-                    System.out.println("No");
-                }
+                isPallindrome(source);
             }
         }
+    }
+
+    private static void isPallindrome(String source) {
+       /* source = source.toLowerCase();                       //check regardless of case and special char including spaces
+        Pattern regex = Pattern.compile("[^A-Za-z]");
+        source = source.replaceAll(regex.pattern(), "");
+        */
+        if (source.equals(reverse(source))) {
+            System.out.println("YES");
+        }
+        System.out.println("No");
     }
 
     private static String reverseString(String source) {
