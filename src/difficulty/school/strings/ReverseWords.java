@@ -11,35 +11,13 @@ public class ReverseWords {
     }
 
     private static void reverseWords(String source) {
-        // String[] words = source.split("\\.");
-        List<String> words = splitString(source);
-        for (int i = words.size() - 1; i >= 0; i--) {
-            System.out.print(words.get(i) + ".");
+        String[] words = source.split("\\.");
+        for (int i = words.length - 1; i >= 0; i--) {
+            System.out.print(words[i] + ".");
         }
     }
 
-    //method 2  -- using auxillary array
-    private static List<String> splitString(String source) {
-        List<String> words = new ArrayList<>();
-        char[] letters = source.toCharArray();
-        char[] word = new char[source.length()];
-        int wordIndex = 0;
-        for (int i = 0; i < letters.length; i++) {
-            if (letters[i] != '.') {
-                word[wordIndex] = letters[i];
-                wordIndex++;
-            } else if (letters[i] == '.') {
-                words.add(new String(word));
-                word = new char[source.length()];
-            }
-            if (i == letters.length - 1) {
-                words.add(new String(word));
-            }
-        }
-        return words;
-    }
-
-    //method 3 --without Auxillary array
+    //method 2 --without Auxillary array
     private static void reverse(String s) {
         char[] revA = s.toCharArray();
         reverseString(revA, 0, s.length() - 1);
@@ -65,5 +43,27 @@ public class ReverseWords {
             revA[k] = revA[wordEnd];
             revA[wordEnd] = temp;
         }
+    }
+
+    //do not use --- uses a lot of extra space and wrong length of string
+    //method 3 -- using auxillary array
+    private static List<String> splitString(String source) {
+        List<String> words = new ArrayList<>();
+        char[] letters = source.toCharArray();
+        char[] word = new char[source.length()];
+        int wordIndex = 0;
+        for (int i = 0; i < letters.length; i++) {
+            if (letters[i] != '.') {
+                word[wordIndex] = letters[i];
+                wordIndex++;
+            } else if (letters[i] == '.') {
+                words.add(new String(word));
+                word = new char[source.length()];
+            }
+            if (i == letters.length - 1) {
+                words.add(new String(word));
+            }
+        }
+        return words;
     }
 }
