@@ -2,6 +2,8 @@ package difficulty.school.strings;
 
 import java.util.Scanner;
 
+import static jdk.nashorn.internal.objects.NativeArray.reverse;
+
 public class Pallindrome {
 
     public static void main(String[] args) {
@@ -10,29 +12,21 @@ public class Pallindrome {
 
             for (int i = 0; i < t; i++) {
                 String source = input.next();
-                String rev = reverseString(source);
-
-                if (source.equals(rev)) {
-                    System.out.println("YES");
-                } else {
-                    System.out.println("No");
-                }
+                isPalindrome(source);
             }
         }
     }
 
-    private static String reverseString(String source) {
-        return new StringBuilder(source).reverse().toString();
-    }
+    private static void isPalindrome(String source) {
+//        source = source.toLowerCase();                       //check regardless of case and special char including spaces
+//        Pattern regex = Pattern.compile("[^A-Za-z0-9]");
+//        source = source.replaceAll(regex.pattern(), "");
 
-    private static String reverse(String source) {
-        char[] origA = source.toCharArray();
-        char[] reverseA = new char[source.length()];
-        for (int i = source.length() - 1; i >= 0; i--) {
-            reverseA[source.length() - 1 - i] = origA[i];
+        if (source.equals(reverse(source))) {
+            System.out.println("YES");
+            return;
         }
-        return new String(reverseA);
+        System.out.println("No");
     }
-
 
 }
