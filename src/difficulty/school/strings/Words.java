@@ -1,8 +1,5 @@
 package difficulty.school.strings;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Words {
 
     public static void main(String[] args) {
