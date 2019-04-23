@@ -1,21 +1,33 @@
 package difficulty.school.strings;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Vowels {
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            int t = Integer.parseInt(br.readLine());
+            for (int i = 0; i < t; i++) {
+                String s = br.readLine();
+                System.out.println(delete(s));
+                reverse(s);
+            }
+        } catch (Exception e) {
 
-        String source = input.nextLine();
-        String neww = delete(source);
-        reverse(source);
-        System.out.println(neww);
-
+        }
     }
 
     private static String delete(String source) {
-        return source.replaceAll("[aeiouAEIOU]", "");
+        //return source.replaceAll("[aeiouAEIOU]", "");
+
+        StringBuilder neww = new StringBuilder();
+        for (int i = 0; i < source.length(); i++) {
+            if (!isVowel(source.charAt(i))) {
+                neww.append(source.charAt(i));
+            }
+        }
+        return neww.toString();
     }
 
     private static void reverse(String source) {
