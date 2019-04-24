@@ -2,6 +2,9 @@ package difficulty.school.strings.words;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.List;
+
+import static difficulty.school.strings.words.SplitString.splitWords;
 
 public class ReverseWords {
 
@@ -15,10 +18,20 @@ public class ReverseWords {
     }
 
     private static void reverseWords(String source) {
-        source = source.trim();
         String[] words = source.split(" ");
         for (int i = words.length - 1; i >= 0; i--) {
-            System.out.print(words[i]);
+            System.out.print(words[i].trim());
+            if (i > 0)
+                System.out.print(" ");
+        }
+        System.out.println();
+    }
+
+    //without java API  --- preferred
+    private static void reverseWordsA(String source) {
+        List<String> words = splitWords(source);
+        for (int i = words.size() - 1; i >= 0; i--) {
+            System.out.print(words.get(i));
             if (i > 0)
                 System.out.print(" ");
         }
