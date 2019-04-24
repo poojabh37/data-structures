@@ -1,28 +1,34 @@
-package difficulty.school.strings;
+package difficulty.school.strings.words;
 
-public class Words {
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class ReverseWords {
 
     public static void main(String[] args) {
-        String source = "pooja.bhatia.is.happy";
-        reverse(source);
-        lengthOfLastWord(source);
-        capitalizeFirstLetterOfWord(source);
-    }
-
-    private static void capitalizeFirstLetterOfWord(String source) {
-        source = source.trim();
-        String[] words = source.split("\\.");
-        for (String word : words) {
-            char[] wordA = word.toCharArray();
-            wordA[0] = Character.toUpperCase(wordA[0]);
-            System.out.print(new String(wordA) + " ");
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            String source = br.readLine();
+            reverseWords(source);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private static void lengthOfLastWord(final String source) {
-        String neww = source.trim();  //for trailing spaces at the last & start of string
-        String[] words = neww.split("\\.");
-        int length = words[words.length - 1].length();
+        int i = source.length() - 1;
+        while (i >= 0 && source.charAt(i) == ' ') {
+            i--;
+        }
+        int length = 0;
+        for (int j = i; j >= 0; j--) {
+            char ch = source.charAt(j);
+            if (!(ch == ' ')) {
+                length++;
+            }
+            if (ch == ' ') {
+                break;
+            }
+        }
         System.out.println(length);
     }
 
@@ -52,7 +58,6 @@ public class Words {
             } else if (i == s.length() - 1) {
                 reverseString(revA, wordStart, s.length() - 1);
             }
-
         }
         System.out.println(new String(revA));
     }
@@ -65,5 +70,4 @@ public class Words {
             revA[wordEnd] = temp;
         }
     }
-
 }
