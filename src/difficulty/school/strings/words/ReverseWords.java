@@ -39,6 +39,7 @@ public class ReverseWords {
     }
 
     //method 2 --without Auxillary array
+    //reverse the string....reverse the words
     private static void reverse(String s) {
         s = s.trim();
         char[] revA = s.toCharArray();
