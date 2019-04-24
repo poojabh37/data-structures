@@ -14,31 +14,13 @@ public class ReverseWords {
         }
     }
 
-    private static void lengthOfLastWord(final String source) {
-        int i = source.length() - 1;
-        while (i >= 0 && source.charAt(i) == ' ') {
-            i--;
-        }
-        int length = 0;
-        for (int j = i; j >= 0; j--) {
-            char ch = source.charAt(j);
-            if (!(ch == ' ')) {
-                length++;
-            }
-            if (ch == ' ') {
-                break;
-            }
-        }
-        System.out.println(length);
-    }
-
     private static void reverseWords(String source) {
         source = source.trim();
-        String[] words = source.split("\\.");
+        String[] words = source.split(" ");
         for (int i = words.length - 1; i >= 0; i--) {
             System.out.print(words[i]);
             if (i > 0)
-                System.out.print(".");
+                System.out.print(" ");
         }
         System.out.println();
     }
@@ -51,7 +33,7 @@ public class ReverseWords {
         int wordStart = 0;
         int wordEnd;
         for (int i = 0; i < s.length(); i++) {
-            if (revA[i] == '.') {
+            if (revA[i] == ' ') {
                 wordEnd = i - 1;
                 reverseString(revA, wordStart, wordEnd);
                 wordStart = i + 1;
