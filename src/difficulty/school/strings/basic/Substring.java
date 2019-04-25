@@ -12,17 +12,16 @@ class Substring {
             int start = input.nextInt();
             int end = input.nextInt();
 
-            String sb1 = substring(start, end, source);
+            substring(start, end, source);
+            String sb1 = source.substring(start, end + 1);
             System.out.println(sb1);
-            System.out.println(source.substring(start, end + 1));
         }
     }
 
-    private static String substring(int start, int end, String s) {
-        StringBuilder sb = new StringBuilder();
+    private static void substring(int start, int end, String s) {
         for (int i = start; i <= end; i++) {
-            sb.append(s.charAt(i));
+            char ch = s.charAt(i);
+            System.out.println(ch);
         }
-        return sb.toString();
     }
 }
