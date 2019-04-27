@@ -2,7 +2,7 @@ package algorithms.search.strings;
 
 import java.util.Scanner;
 
-public class StartEndSameSubStringFinder {
+public class StartEndSamePattern {
 
     public static void main(String[] args) {
         try (Scanner input = new Scanner(System.in)) {
