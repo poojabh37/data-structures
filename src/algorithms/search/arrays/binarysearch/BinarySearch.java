@@ -7,37 +7,16 @@ public class BinarySearch {
     public static void main(String[] args) {
         int search = 10;
 
-        int arr[] = {1, 10, 10, 10, 11, 12};
+        int arr[] = {1, 3, 10, 10, 10, 10, 11};
 
         int index = search(arr, search);
         printStatus(index);
 
-        index = firstOccurence(arr, search);
+        index = searchOccurrence(arr, search, true);
         printStatus(index);
 
-        index = lastOccurence(arr, search);
+        index = searchOccurrence(arr, search, false);
         printStatus(index);
-
-        countOccurences(arr, search);
-    }
-
-    private static void countOccurences(int[] arr, int search) {
-        int count = 0;
-        int start = 0;
-        int end = arr.length - 1;
-        int mid = getMid(start, end);
-        while (start <= end) {
-            if (search == arr[mid]) {
-                count++;   //element found
-                end = mid - 1;  // search more in II half
-            } else if (arr[mid] < search) {
-                start = mid + 1;
-            } else {
-                end = mid - 1;
-            }
-            mid = getMid(start, end);
-        }
-        System.out.println(count);
     }
 
     private static int search(int arr[], int search) {
@@ -57,26 +36,15 @@ public class BinarySearch {
         return -1;
     }
 
-    private static int firstOccurence(int arr[], int search) {
-        int loc = -1;
-        int start = 0;
-        int end = arr.length - 1;
-        int mid = getMid(start, end);
-        while (start <= end) {
-            if (search == arr[mid]) {
-                loc = mid;
-                end = mid - 1;  // search more in II half
-            } else if (arr[mid] < search) {
-                start = mid + 1;
-            } else {
-                end = mid - 1;
-            }
-            mid = getMid(start, end);
-        }
-        return loc;
-    }
+    /*
+    if 
+    searchFirst == true
+    returns : first occurrence of element
 
-    private static int lastOccurence(int[] arr, int search) {
+    else
+    returns : last occurrence of element
+     */
+    static int searchOccurrence(int[] arr, int search, boolean searchFirst) {
         int loc = -1;
         int start = 0;
         int end = arr.length - 1;
@@ -84,7 +52,11 @@ public class BinarySearch {
         while (start <= end) {
             if (search == arr[mid]) {
                 loc = mid;
-                start = mid + 1;  // search more in II half
+                if (searchFirst) {
+                    end = mid - 1;   // search more in Ist half
+                } else {
+                    start = mid + 1;   // search more in IInd half
+                }
             } else if (arr[mid] < search) {
                 start = mid + 1;
             } else {
