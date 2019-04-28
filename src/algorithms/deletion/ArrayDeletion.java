@@ -8,8 +8,8 @@ public class ArrayDeletion {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[] arr = new int[100];
         int size = sc.nextInt();
+        int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
             arr[i] = sc.nextInt();
         }
@@ -22,7 +22,7 @@ public class ArrayDeletion {
     //returns element deleted
     private static int delete(int[] arr, int size, int pos) {
         int item = arr[pos];
-        for (int i = pos; i < size; i++) {
+        for (int i = pos; i < size - 1; i++) {
             arr[i] = arr[i + 1];
         }
         size = size - 1;
