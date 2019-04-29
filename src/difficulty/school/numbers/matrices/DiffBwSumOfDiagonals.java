@@ -1,8 +1,8 @@
-package difficulty.school.numbers;
+package difficulty.school.numbers.matrices;
 
 import java.util.Scanner;
 
-public class DiffBwSumOfDiagnols {
+public class DiffBwSumOfDiagonals {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

@@ -19,6 +19,7 @@ public class Pallindrome {
         }
     }
 
+    //can also be done using strings
     private static int reverse(int num) {
         int reverse = 0;
         while (num > 0) {
