@@ -12,7 +12,7 @@ public class BubbleSort {
 
     private static void bubbleSort(int[] arr, int size) {
         for (int pass = 0; pass < size - 1; pass++) {
-            System.out.println("-----------------Pass : " + pass + " ------------------");
+            System.out.println("\n-----------------Pass : " + pass + " ------------------");
             int steps = size - 1 - pass;
             for (int j = 0; j < steps; j++) {
                 if (arr[j] > arr[j + 1]) {
