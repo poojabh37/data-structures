@@ -1,6 +1,6 @@
 package difficulty.school.numbers;
 
-public class Swap2NumWithoutTemp {
+public class Swap2Num {
 
     public static void main(String[] args) {
         int a = 6;
@@ -9,10 +9,10 @@ public class Swap2NumWithoutTemp {
         swap(a, b);
     }
 
-    private static void swap(int a, int b) {
+    public static void swap(int a, int b) {
         a = a + b;
         b = a - b;
         a = a - b;
-        System.out.println(a + " " + b);
+        System.out.println("          Swapped " + a + " " + b);
     }
 }
