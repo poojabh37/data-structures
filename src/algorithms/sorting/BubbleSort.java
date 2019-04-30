@@ -1,6 +1,6 @@
 package algorithms.sorting;
 
-import static difficulty.school.numbers.Swap2Num.swap;
+import static algorithms.sorting.QuickSort.swap;
 
 //Complexity : O(n2)
 public class BubbleSort {
@@ -12,16 +12,14 @@ public class BubbleSort {
 
     private static void bubbleSort(int[] arr, int size) {
         for (int pass = 0; pass < size - 1; pass++) {
-            System.out.println("\n-----------------Pass : " + pass + " ------------------");
             int steps = size - 1 - pass;
             for (int j = 0; j < steps; j++) {
                 if (arr[j] > arr[j + 1]) {
-                    swap(arr[j], arr[j + 1]);
+                    swap(arr, j, j + 1);
                 }
-                System.out.print("Step " + j + "     ");
-                printElements(arr);
             }
         }
+        printElements(arr);
     }
 
     private static void printElements(int[] arr) {
