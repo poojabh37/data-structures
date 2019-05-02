@@ -14,7 +14,7 @@ public class Vowels {
                 reverse(s);
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 

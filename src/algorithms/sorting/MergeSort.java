@@ -1,14 +1,14 @@
 package algorithms.sorting;
 
+import static algorithms.sorting.BubbleSort.printElements;
+
 public class MergeSort {
 
     public static void main(String[] args) {
         int arr[] = {1, 2, 4, 6, 8, 5, 3, 7};
 
         mergeSort(arr, arr.length);
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
+        printElements(arr);
     }
 
     //divide and conquer

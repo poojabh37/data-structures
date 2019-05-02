@@ -71,7 +71,7 @@ public class BinarySearch {
         return (start + end) / 2;
     }
 
-    static void printStatus(int index) {
+    public static void printStatus(int index) {
         if (index >= 0) {
             System.out.println("Element found at index " + index);
         } else {

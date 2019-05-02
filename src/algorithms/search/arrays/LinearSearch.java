@@ -1,5 +1,7 @@
 package algorithms.search.arrays;
 
+import static algorithms.search.arrays.binarysearch.BinarySearch.printStatus;
+
 public class LinearSearch {
 
     public static void main(String[] args) {
@@ -8,11 +10,7 @@ public class LinearSearch {
         int arr[] = {12, 5, 89, 45, 23, 56, 38};
 
         int index = search(arr, search);
-        if (index >= 0) {
-            System.out.println("Element found at index " + index);
-        } else {
-            System.out.println("Element NOT found");
-        }
+        printStatus(index);
     }
 
     private static int search(int[] arr, int search) {

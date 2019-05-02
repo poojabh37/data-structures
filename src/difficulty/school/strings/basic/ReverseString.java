@@ -33,7 +33,7 @@ class ReverseString {
     private static String reverseSwap(String source) {
         char[] origA = source.toCharArray();
         for (int i = 0, j = source.length() - 1; i < j; i++, j--) {
-            char temp = 't';
+            char temp;
             temp = origA[i];
             origA[i] = origA[j];
             origA[j] = temp;

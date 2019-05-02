@@ -1,14 +1,15 @@
 package algorithms.sorting;
 
+import static algorithms.sorting.BubbleSort.printElements;
+
+// Complexity : O(nlogn)
 public class QuickSort {
 
     public static void main(String[] args) {
         int[] arr = {7, 2, 1, 6, 8, 5, 3, 4};
 
         quickSort(arr, 0, arr.length - 1);
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
+        printElements(arr);
     }
 
     private static void quickSort(int[] arr, int start, int end) {

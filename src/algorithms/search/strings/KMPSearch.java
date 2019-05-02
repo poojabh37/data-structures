@@ -2,6 +2,8 @@ package algorithms.search.strings;
 
 import java.util.Scanner;
 
+import static algorithms.sorting.BubbleSort.printElements;
+
 public class KMPSearch {
 
     public static void main(String[] args) {
@@ -61,9 +63,7 @@ public class KMPSearch {
 
     private static void printLPS(int[] lps) {
         System.out.print("LPS : [");
-        for (int lp : lps) {
-            System.out.print(lp + " ");
-        }
+        printElements(lps);
         System.out.println("]");
     }
 
