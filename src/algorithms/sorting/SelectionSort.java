@@ -14,7 +14,7 @@ public class SelectionSort {
     }
 
     private static void selectionSort(int[] arr, int length) {
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length - 1; i++) {
             int minLoc = minimum(arr, i);
             swap(arr, i, minLoc);
         }
