@@ -2,10 +2,11 @@ package algorithms.sorting;
 
 import static algorithms.sorting.BubbleSort.printElements;
 
+//Complexity : O(NlogN)
 public class MergeSort {
 
     public static void main(String[] args) {
-        int arr[] = {1, 2, 4, 6, 8, 5, 3, 7};
+        int arr[] = {2, 5, 3, 6, 8, 5, 4, 1};
 
         mergeSort(arr, arr.length);
         printElements(arr);

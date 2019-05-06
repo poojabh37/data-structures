@@ -1,6 +1,7 @@
 package algorithms.sorting;
 
 import static algorithms.sorting.BubbleSort.printElements;
+import static algorithms.sorting.BubbleSort.swap;
 
 // Complexity : O(nlogn)
 public class QuickSort {
@@ -32,13 +33,5 @@ public class QuickSort {
         }
         swap(arr, end, pIndex);
         return pIndex;
-    }
-
-    static void swap(int[] arr, int a, int b) {
-        if (a != b) {
-            arr[a] = arr[a] + arr[b];
-            arr[b] = arr[a] - arr[b];
-            arr[a] = arr[a] - arr[b];
-        }
     }
 }
