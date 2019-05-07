@@ -2,7 +2,7 @@ package difficulty.school.numbers.recursion;
 
 import java.util.Scanner;
 
-public class FibonacciSeriesRecursive {
+public class FibonacciSeries {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
