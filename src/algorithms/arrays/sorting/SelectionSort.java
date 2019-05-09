@@ -1,7 +1,7 @@
 package algorithms.arrays.sorting;
 
 import static algorithms.arrays.sorting.BubbleSort.printElements;
-import static algorithms.arrays.sorting.QuickSort.swap;
+import static algorithms.arrays.sorting.BubbleSort.swap;
 
 //Complexity : O(n2)
 public class SelectionSort {
