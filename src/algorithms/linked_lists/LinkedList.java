@@ -6,13 +6,14 @@ public class LinkedList {
 
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
+        list.insertStart(1);
+        list.insertAfter(2, 1);
         list.insertStart(0);
-        list.insertEnd(1);
-        list.insertEnd(2);
-        list.insertEnd(3);
-        list.insertEnd(4);
         list.insertEnd(5);
         list.insertEnd(6);
+        list.insertAfter(3, 2);
+        list.insertBefore(4, 3);
+        list.insertEnd(7);
         printList(list);
 
         reverse(list);
