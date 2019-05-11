@@ -11,7 +11,7 @@ public class LinkedList {
         list.insertEnd(3);
         printList(list);
 
-        list.deleteBefore(2);
+        list.deleteAfter(4);
         printList(list);
     }
 
@@ -123,6 +123,16 @@ public class LinkedList {
         }
         if (current.next != null) {  //if num is not present or num is at start
             prev.next = current.next;
+        }
+    }
+
+    private void deleteAfter(int num) {
+        Node current = start;
+        while (current != null && current.data != num) {
+            current = current.next;
+        }
+        if (current != null && current.next != null) { //if num is last node or not present
+            current.next = current.next.next;
         }
     }
 
