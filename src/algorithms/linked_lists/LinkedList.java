@@ -7,25 +7,125 @@ public class LinkedList {
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
         list.insertStart(1);
-        list.insertAfter(2, 1);
-        list.insertStart(0);
-        list.insertEnd(5);
-        list.insertEnd(6);
-        list.insertAfter(3, 2);
-        list.insertBefore(4, 3);
-        list.insertEnd(7);
+        list.insertEnd(2);
+        list.insertEnd(3);
         printList(list);
 
-        reverse(list);
+        list.insertBefore(4, 5);
         printList(list);
+    }
+
+    private static void printList(LinkedList list) {
+        if (list.start == null) {
+            System.out.println("Empty list");
+        } else {
+            Node current = list.start;
+            while (current != null) {
+                System.out.print(current.data + " -> ");
+                current = current.next;
+            }
+            System.out.println("NULL");
+        }
+    }
+
+    private void insertStart(int data) {
+        Node newNode = new Node(data);
+        if (start == null) {
+            start = newNode;
+        } else {
+            newNode.next = start;
+            start = newNode;
+        }
+    }
+
+    private void insertEnd(int data) {
+        Node newNode = new Node(data);
+        if (start == null) {
+            start = newNode;
+        } else {
+            Node last = start;
+            while (last.next != null) {
+                last = last.next;
+            }
+            last.next = newNode;
+        }
+    }
+
+    private void insertAfter(int data, int num) {
+        Node newNode = new Node(data);
+
+        Node ptr = start;
+        while (ptr.next != null && ptr.data != num) {
+            ptr = ptr.next;
+        }
+        newNode.next = ptr.next;
+        ptr.next = newNode;
+    }
+
+    private void insertBefore(int data, int num) {
+        Node newNode = new Node(data);
+        if (start.data == num) {
+            newNode.next = start;
+            start = newNode;
+        } else {
+            Node ptr = start;
+            while (ptr.next != null && ptr.next.data != num) {
+                ptr = ptr.next;
+            }
+            newNode.next = ptr.next;
+            ptr.next = newNode;
+        }
+    }
+
+    private static void deleteList(LinkedList list) {
+        list.start = null;
     }
 
     private static void deleteStart(LinkedList list) {
         list.start = list.start.next;
     }
 
-    private static void deleteList(LinkedList list) {
-        list.start = null;
+    private void deleteEnd() {
+        Node current = start;
+        if (start.next == null) {
+            start = null;
+            return;
+        }
+        while (current.next.next != null) {
+            current = current.next;
+        }
+        current.next = null;
+    }
+
+    private void deleteNode(int num) {
+        if (start.data == num) {
+            start = start.next;
+        } else {
+            Node current = start;
+            while (current.next != null && current.next.data != num) {
+                current = current.next;
+            }
+            if (current.next != null) {
+                current.next = current.next.next;
+            }
+        }
+    }
+
+    private static void reverse(LinkedList list) {
+        if (list.start == null) {
+            System.out.println("Empty list");
+        } else {
+            Node current = list.start;
+            Node prev = null;
+            Node next;
+            while (current != null) {
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+            list.start = prev;
+        }
     }
 
     private static void reverseBetween(LinkedList list, int num1, int num2) {
@@ -51,93 +151,6 @@ public class LinkedList {
             reverseStart.next = current;
         }
         reverseEnd.next = next;
-    }
-
-    private static void reverse(LinkedList list) {
-        if (list.start == null) {
-            System.out.println("Empty list");
-        } else {
-            Node current = list.start;
-            Node prev = null;
-            Node next;
-            while (current != null) {
-                next = current.next;
-                current.next = prev;
-                prev = current;
-                current = next;
-            }
-            list.start = prev;
-        }
-    }
-
-    private static void printList(LinkedList list) {
-        if (list.start == null) {
-            System.out.println("Empty list");
-        } else {
-            Node current = list.start;
-            while (current != null) {
-                System.out.print(current.data + " -> ");
-                current = current.next;
-            }
-            System.out.println("NULL");
-        }
-    }
-
-    private void deleteEnd() {
-        Node current = start;
-        if (start.next == null) {
-            start = null;
-            return;
-        }
-        while (current.next.next != null) {
-            current = current.next;
-        }
-        current.next = null;
-    }
-
-    private void insertBefore(int data, int num) {
-        Node newNode = new Node(data);
-
-        Node ptr = start;
-        while (ptr.next.data != num) {
-            ptr = ptr.next;
-        }
-        newNode.next = ptr.next;
-        ptr.next = newNode;
-    }
-
-    private void insertAfter(int data, int num) {
-        Node newNode = new Node(data);
-
-        Node ptr = start;
-        while (ptr.next != null && ptr.data != num) {
-            ptr = ptr.next;
-        }
-        newNode.next = ptr.next;
-        ptr.next = newNode;
-    }
-
-    private void insertStart(int data) {
-        Node newNode = new Node(data);
-        if (start == null) {
-            start = newNode;
-        } else {
-            newNode.next = start;
-            start = newNode;
-        }
-    }
-
-    private void insertEnd(int data) {
-        Node newNode = new Node(data);
-        if (start == null) {
-            start = newNode;
-        } else {
-            Node last = start;
-            while (last.next != null) {
-                last = last.next;
-            }
-            last.next = newNode;
-        }
     }
 
     class Node {
