@@ -18,9 +18,14 @@ public class LinkedList {
 
         reverse(list);
         printList(list);
+    }
 
-        reverseBetween(list, 5, 2);
-        printList(list);
+    private static void deleteStart(LinkedList list) {
+        list.start = list.start.next;
+    }
+
+    private static void deleteList(LinkedList list) {
+        list.start = null;
     }
 
     private static void reverseBetween(LinkedList list, int num1, int num2) {
@@ -42,7 +47,9 @@ public class LinkedList {
         }
         next = current.next;
         current.next = prev;
-        reverseStart.next = current;
+        if (reverseStart != null) {
+            reverseStart.next = current;
+        }
         reverseEnd.next = next;
     }
 
@@ -74,6 +81,18 @@ public class LinkedList {
             }
             System.out.println("NULL");
         }
+    }
+
+    private void deleteEnd() {
+        Node current = start;
+        if (start.next == null) {
+            start = null;
+            return;
+        }
+        while (current.next.next != null) {
+            current = current.next;
+        }
+        current.next = null;
     }
 
     private void insertBefore(int data, int num) {
