@@ -1,21 +1,23 @@
 package algorithms.linked_lists;
 
+import java.util.Scanner;
+
 public class LinkedList {
 
     private Node start;
 
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
-        list.insertStart(1);
-        list.insertEnd(2);
-        list.insertEnd(3);
-        list.insertStart(0);
-        list.insertEnd(4);
-        list.insertEnd(5);
-        list.insertEnd(6);
-        printList(list);
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
 
-        list.middleElement();
+        for (int i = 1; i <= num; i++) {
+            int data = sc.nextInt();
+            list.insertEnd(data);
+        }
+        printList(list);
+        removeDuplicates(list);
+        printList(list);
         // list.deleteAfter(4);
         // printList(list);
     }
@@ -196,6 +198,20 @@ public class LinkedList {
         System.out.println(slow.data);
         return slow;
     }
+
+    private static void removeDuplicates(LinkedList list) {
+        Node current = list.start;
+        Node next;
+        while (current != null && current.next != null) {
+            next = current.next;
+            while (next != null && current.data == next.data) {
+                current.next = next.next;
+                next = next.next;
+            }
+            current = current.next;
+        }
+    }
+
 
     class Node {
         int data;

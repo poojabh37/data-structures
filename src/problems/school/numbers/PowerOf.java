@@ -1,4 +1,4 @@
-package problems.school;
+package problems.school.numbers;
 
 import java.math.BigInteger;
 import java.util.Scanner;
