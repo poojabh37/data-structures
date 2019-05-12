@@ -1,15 +1,16 @@
 package problems.school;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
-public class PowerOf2 {
+public class PowerOf {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
         int power = sc.nextInt();
 
-        long value = powerOf(num, power);
+        String value = new PowerOf().powerOfLarge(num, power);
         System.out.println(value);
     }
 
@@ -22,29 +23,35 @@ public class PowerOf2 {
         return value;
     }
 
+    /*Example
+    pow(2,9)
+    = pow(2,4) * pow(2*4) * 2;
+    = pow(2*2, 4) * 2
+    */
     //complexity : O(n/2)
-    private static long powerOf(int num, int power) {
+    private String powerOfLarge(int num, int power) {
         if (num == 0) {
-            return 0;
+            return "0";
         }
         if (power == 0) {
-            return 1;
+            return "1";
         }
         if (power == 1) {
-            return num;
+            return Integer.toString(num);
         }
         int midPow = power / 2;
         int remPow = power % 2;
 
-        int value = 1;
+        int nums = num * num;
+        BigInteger numm = new BigInteger(Integer.toString(nums));
+        BigInteger value = new BigInteger("1");
         for (int i = 0; i < midPow; i++) {
-            value = value * num;
+            value = value.multiply(numm);
         }
 
-        value = value * value;
         if (remPow != 0) {
-            value = value * num;
+            value = value.multiply(numm);
         }
-        return value;
+        return value.toString();
     }
 }
