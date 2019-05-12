@@ -9,13 +9,18 @@ public class LinkedList {
         list.insertStart(1);
         list.insertEnd(2);
         list.insertEnd(3);
+        list.insertStart(0);
+        list.insertEnd(4);
+        list.insertEnd(5);
+        list.insertEnd(6);
         printList(list);
 
-        list.deleteAfter(4);
-        printList(list);
+        list.middleElement();
+        // list.deleteAfter(4);
+        // printList(list);
     }
 
-    private static void printList(LinkedList list) {
+    static void printList(LinkedList list) {
         if (list.start == null) {
             System.out.println("Empty list");
         } else {
@@ -28,7 +33,7 @@ public class LinkedList {
         }
     }
 
-    private void insertStart(int data) {
+    void insertStart(int data) {
         Node newNode = new Node(data);
         if (start == null) {
             start = newNode;
@@ -38,7 +43,7 @@ public class LinkedList {
         }
     }
 
-    private void insertEnd(int data) {
+    void insertEnd(int data) {
         Node newNode = new Node(data);
         if (start == null) {
             start = newNode;
@@ -176,6 +181,20 @@ public class LinkedList {
             reverseStart.next = current;
         }
         reverseEnd.next = next;
+    }
+
+    Node middleElement() {
+        Node slow = start;
+        Node fast = start;
+        while (fast.next != null) {
+            fast = fast.next;
+            if (fast.next != null) {
+                slow = slow.next;
+                fast = fast.next;
+            }
+        }
+        System.out.println(slow.data);
+        return slow;
     }
 
     class Node {
