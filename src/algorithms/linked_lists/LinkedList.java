@@ -1,6 +1,8 @@
 package algorithms.linked_lists;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class LinkedList {
 
@@ -9,16 +11,20 @@ public class LinkedList {
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
+//        int num = sc.nextInt();
 
-        for (int i = 1; i <= num; i++) {
-            // int data = sc.nextInt();
-            list.insertEnd(i);
-        }
-        printList(list);
-        list.middleElement();
-        // list.deleteAfter(4);
-        // printList(list);
+        Node a = new Node(1);
+        list.start = a;
+        Node b = new Node(2);
+        list.start.next = b;
+        Node c = new Node(3);
+        list.start.next.next = c;
+        Node d = new Node(4);
+        list.start.next.next.next = d;
+        list.start.next.next.next.next = list.start;
+
+        boolean has = list.hasLoop();
+        System.out.println(has);
     }
 
     static void printList(LinkedList list) {
@@ -211,41 +217,40 @@ public class LinkedList {
         }
     }
 
-    private boolean isPalindrome(Node head) {
-        int total = 1;
-        Node current = head;
-        while (current.next != null) {
-            current = current.next;
-            total++;
-        }
-
-        int mid = total / 2;
-        if (total % 2 == 1) {
-            mid = mid + 1;
-        }
-
-        current = head;
-        int arr[] = new int[total / 2];
-        int count = 1;
-        while (count <= mid) {
-            if (count - 1 < arr.length) {
-                arr[count - 1] = current.data;
-            }
-            current = current.next;
-            count++;
-        }
-        count = arr.length - 1;
+    private void removeDuplicates() {
+        Set<Integer> nums = new HashSet<>();
+        Node current = start;
+        Node prev = null;
         while (current != null) {
-            if (current.data != arr[count]) {
-                return false;
+            if (!nums.contains(current.data)) {
+                nums.add(current.data);
+                prev = current;
+            } else {
+                prev.next = current.next;
             }
             current = current.next;
-            count--;
         }
-        return true;
     }
 
-    class Node {
+    //hare turtle
+    private boolean hasLoop() {
+        Node slow = start;
+        Node fast = start;
+        int count = 0;
+        while (slow != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            count++;
+            if (slow == fast) {
+                System.out.println(count);
+                return true;
+            }
+        }
+        System.out.println(count);
+        return false;
+    }
+
+    static class Node {
         int data;
         Node next;
 
