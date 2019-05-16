@@ -9,22 +9,27 @@ public class LinkedList {
     Node start;
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        NthFromTheEnd list = new NthFromTheEnd();
         Scanner sc = new Scanner(System.in);
-//        int num = sc.nextInt();
-
-        Node a = new Node(1);
-        list.start = a;
-        Node b = new Node(2);
-        list.start.next = b;
-        Node c = new Node(3);
-        list.start.next.next = c;
-        Node d = new Node(4);
-        list.start.next.next.next = d;
-        list.start.next.next.next.next = list.start;
-
-        boolean has = list.hasLoop();
-        System.out.println(has);
+        int num = sc.nextInt();
+        for (int i = 0; i < num; i++) {
+            list.insertEnd(i);
+        }
+        printList(list);
+        int n = sc.nextInt();
+        list.nthFromThEnd(n);
+//        Node a = new Node(1);
+//        list.start = a;
+//        Node b = new Node(2);
+//        list.start.next = b;
+//        Node c = new Node(3);
+//        list.start.next.next = c;
+//        Node d = new Node(4);
+//        list.start.next.next.next = d;
+//        list.start.next.next.next.next = list.start;
+//
+//        boolean has = list.hasLoop();
+//        System.out.println(has);
     }
 
     static void printList(LinkedList list) {
@@ -237,7 +242,7 @@ public class LinkedList {
         Node slow = start;
         Node fast = start;
         int count = 0;
-        while (slow != null && fast.next != null) {
+        while (slow != null && fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
             count++;
