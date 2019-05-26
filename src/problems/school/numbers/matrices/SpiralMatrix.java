@@ -6,8 +6,8 @@ public class SpiralMatrix {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int m = 7;
-        int n = 3;
+        int m = sc.nextInt();
+        int n = sc.nextInt();
         int arr[][] = new int[m][n];
 
         int num = 1;
@@ -21,14 +21,11 @@ public class SpiralMatrix {
     }
 
     private static void printSpiral(int[][] arr, int row, int col) {
-        int i = 0;
-        int j = 0;
-
         int iStart = 0;
         int jStart = 0;
         while (iStart < row && jStart < col) {
-            i = iStart;
-            j = jStart;
+            int i = iStart;
+            int j = jStart;
             while (j < col) {
                 System.out.print(arr[i][j] + " ");
                 j++;
@@ -49,9 +46,13 @@ public class SpiralMatrix {
             if (j >= jStart) {
                 i--;    //left
                 j--;
-                while (j >= jStart) {
-                    System.out.print(arr[i][j] + " ");
-                    j--;
+                if (j >= jStart) {
+                    while (j >= jStart) {
+                        System.out.print(arr[i][j] + " ");
+                        j--;
+                    }
+                } else {
+                    break;
                 }
             } else {
                 break;
