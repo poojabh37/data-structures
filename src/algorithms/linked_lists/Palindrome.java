@@ -1,5 +1,6 @@
 package algorithms.linked_lists;
 
+//to do : do without extra memory
 public class Palindrome extends LinkedList {
 
     private static boolean isPalindrome(Node head) {

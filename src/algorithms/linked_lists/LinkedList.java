@@ -18,6 +18,8 @@ public class LinkedList {
         printList(list);
         int n = sc.nextInt();
         list.nthFromThEnd(n);
+        list.removeNthFromEnd(n);
+        printList(list);
 //        Node a = new Node(1);
 //        list.start = a;
 //        Node b = new Node(2);
@@ -210,13 +212,25 @@ public class LinkedList {
     }
 
     private static void removeDuplicatesSorted(LinkedList list) {
+        Node prev = null;
+        Node deleted = null;
         Node current = list.start;
         Node next;
         while (current != null && current.next != null) {
             next = current.next;
             while (next != null && current.data == next.data) {
+                deleted = next;
                 current.next = next.next;
                 next = next.next;
+            }
+            if (deleted != null && deleted.data == list.start.data) {
+                list.start = list.start.next;
+            }
+
+            if (prev != null && deleted != null && deleted.data == current.data) {
+                prev.next = next;
+            } else {
+                prev = current;
             }
             current = current.next;
         }

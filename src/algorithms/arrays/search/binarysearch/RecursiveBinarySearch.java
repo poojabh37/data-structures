@@ -16,17 +16,17 @@ public class RecursiveBinarySearch {
     }
 
     private static int search(int[] arr, int start, int end, int item) {
-        while (start <= end) {
+        if (start <= end) {
             int mid = getMid(start, end);
 
             if (arr[mid] == item) {
                 return mid;
             } else if (arr[mid] > item) {
                 end = mid - 1;
-                search(arr, start, end, item);
+                return search(arr, start, end, item);
             } else {
                 start = mid + 1;
-                search(arr, start, end, item);
+                return search(arr, start, end, item);
             }
         }
         return -1;

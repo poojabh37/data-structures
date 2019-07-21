@@ -1,3 +1,5 @@
+package problems.school.strings;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -31,10 +33,10 @@ public class AToI {
             char c = A.charAt(i);
             if (c >= '0' && c <= '9') {
                 integer = integer * 10;
-                if (isNegative && integer < Integer.MIN_VALUE) {
-                    return Integer.MIN_VALUE;
-                }
-                if (!isNegative && integer > Integer.MAX_VALUE) {
+                if (integer > Integer.MAX_VALUE) {
+                    if (isNegative) {
+                        return Integer.MIN_VALUE;
+                    }
                     return Integer.MAX_VALUE;
                 }
                 integer += c - '0';
@@ -42,10 +44,10 @@ public class AToI {
                 break;
             }
         }
-        if (isNegative && integer > Integer.MAX_VALUE) {
-            return Integer.MIN_VALUE;
-        }
-        if (!isNegative && integer > Integer.MAX_VALUE) {
+        if (integer > Integer.MAX_VALUE) {
+            if (isNegative) {
+                return Integer.MIN_VALUE;
+            }
             return Integer.MAX_VALUE;
         }
         if (isNegative) {

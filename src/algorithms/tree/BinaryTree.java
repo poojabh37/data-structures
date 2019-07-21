@@ -1,6 +1,9 @@
-package algorithms;
+package algorithms.tree;
 
 import java.util.Scanner;
+
+import static algorithms.tree.TreeTraversal.postOrder;
+import static algorithms.tree.TreeTraversal.preorder;
 
 public class BinaryTree {
 
@@ -9,7 +12,10 @@ public class BinaryTree {
     public static void main(String[] args) {
         TreeNode root = createNode();
         createNode();
+        System.out.println("PreOrder : ");
         preorder(root);
+        System.out.println("Post Order : ");
+        postOrder(root);
     }
 
     private static TreeNode createNode() {
@@ -27,15 +33,6 @@ public class BinaryTree {
         newNode.right = createNode();
 
         return newNode;
-    }
-
-    private static void preorder(TreeNode node) {
-        if (node == null) {
-            return;
-        }
-        System.out.println(node.data);
-        preorder(node.left);
-        preorder(node.right);
     }
 
     static class TreeNode {
