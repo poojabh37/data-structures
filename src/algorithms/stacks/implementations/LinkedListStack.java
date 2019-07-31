@@ -2,7 +2,7 @@ package algorithms.stacks.implementations;
 
 public class LinkedListStack implements Stack {
 
-    private Node start;
+    private Node top;
 
     @Override
     public void push(int item) {
@@ -11,11 +11,11 @@ public class LinkedListStack implements Stack {
 
     private void insertStart(int data) {
         Node newNode = new Node(data);
-        if (start == null) {
-            start = newNode;
+        if (top == null) {
+            top = newNode;
         } else {
-            newNode.next = start;
-            start = newNode;
+            newNode.next = top;
+            top = newNode;
         }
     }
 
@@ -25,8 +25,8 @@ public class LinkedListStack implements Stack {
     }
 
     private int deleteStart() {
-        int data = start.data;
-        start = start.next;
+        int data = top.data;
+        top = top.next;
         return data;
     }
 
@@ -37,11 +37,14 @@ public class LinkedListStack implements Stack {
 
     @Override
     public boolean isEmpty() {
-        return start == null;
+        return top == null;
     }
 
     private int getStartData() {
-        return start.data;
+        if (isEmpty()) {
+            throw new RuntimeException("Empty Stack");
+        }
+        return top.data;
     }
 
     private class Node {
