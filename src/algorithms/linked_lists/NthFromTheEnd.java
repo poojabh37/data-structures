@@ -22,7 +22,7 @@ public class NthFromTheEnd extends LinkedList {
         System.out.println(main.data);
     }
 
-    public void removeNthFromEnd(int n) {
+    void removeNthFromEnd(int n) {
         Node mainPrev = null;
         Node ref = start;
         Node main = start;

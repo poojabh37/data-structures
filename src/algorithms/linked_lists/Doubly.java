@@ -1,8 +1,8 @@
 package algorithms.linked_lists;
 
 public class Doubly {
-    public DoublyNode head;
-    public DoublyNode tail;
+    private DoublyNode head;
+    private DoublyNode tail;
 
     public static void main(String[] args) {
         Doubly doubly = new Doubly();
@@ -47,7 +47,7 @@ public class Doubly {
 
     }
 
-    public static void printDoublyLinkedList(DoublyNode node) {
+    private static void printDoublyLinkedList(DoublyNode node) {
         while (node != null) {
             System.out.print(node.data + "->");
             node = node.next;

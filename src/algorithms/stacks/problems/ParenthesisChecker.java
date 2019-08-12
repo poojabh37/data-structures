@@ -3,6 +3,9 @@ package algorithms.stacks.problems;
 import java.util.Scanner;
 import java.util.Stack;
 
+import static algorithms.stacks.problems.StackUtil.isMatchingBracket;
+import static algorithms.stacks.problems.StackUtil.isOpenBracket;
+
 public class ParenthesisChecker {
 
     public static void main(String[] args) {
@@ -20,13 +23,13 @@ public class ParenthesisChecker {
         int i;
         for (i = 0; i < braces.length(); i++) {
             char current = braces.charAt(i);
-            if (isOpening(current)) {
+            if (isOpenBracket(current)) {
                 braceStack.push(current);
             } else {
                 if (braceStack.isEmpty()) {
                     return false;
                 }
-                if (isMatchFound(braceStack.peek(), current)) {
+                if (isMatchingBracket(braceStack.peek(), current)) {
                     braceStack.pop();
                 } else {
                     return false;
@@ -36,13 +39,4 @@ public class ParenthesisChecker {
         return braceStack.isEmpty();
     }
 
-    private static boolean isOpening(char brace) {
-        return brace == '[' || brace == '{' || brace == '(';
-    }
-
-    private static boolean isMatchFound(char topOfStack, char current) {
-        return (topOfStack == '[' && current == ']') ||
-                (topOfStack == '{' && current == '}') ||
-                (topOfStack == '(' && current == ')');
-    }
 }
